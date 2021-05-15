@@ -3,7 +3,7 @@
     /*session_start();
     if($_SESSION["ncuenta"])
     {
-        header('location: ./ingresar.php');
+        header('location: ./data_alum.php');
     }*/
 
 ?>
@@ -17,7 +17,7 @@
     <title>Consultoría Kiki</title>
 </head>
 <body>
-    <form action="./ingresar.php" method="POST">
+    <form action="./data_alum.php" method="POST">
         <fieldset>
             <br>
             <strong>Execute Pase Reglamentado</strong>
