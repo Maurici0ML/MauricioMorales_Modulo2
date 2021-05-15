@@ -1,3 +1,13 @@
+<?php
+
+    /*session_start();
+    if($_SESSION["ncuenta"])
+    {
+        header('location: ./ingresar.php');
+    }*/
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

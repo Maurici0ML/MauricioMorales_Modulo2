@@ -17,8 +17,3 @@
         return $c;
     }
 ?>
-
-<?php
-    require_once 'configDB.php';
-    $conexion=conectdb();
-?>
