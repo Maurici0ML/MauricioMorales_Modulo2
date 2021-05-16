@@ -12,8 +12,7 @@
         $resp = mysqli_query($conex, $consulta);
         $sedmod = mysqli_num_rows($resp);
         
-        echo '<br>';
-
+        //Condicion que determina si hay mas de una localidad o sede.
         if($sedmod > 1)
         {
             echo '<h2>Su carrera solicitada tiene más de una modalidad o sede</h2>';
@@ -39,14 +38,15 @@
                         </tr>
                     </thead>
                     <tbody>';
-                    
+
+            //While que despliega las distintas opciones que tiene la carrera        
             while($row= mysqli_fetch_array($resp, MYSQLI_ASSOC))
             {
                 echo '<tr>
-                        <td>'.$row["Nombre"].'</td>
-                        <td>'.$row["Modalidad"].'</td>
-                        <td>'.$row["Ubicacion"].'</td>
-                        <td><input type="radio" name="id_pase" value="'.$row["id_pase"].'"></td>
+                        <td align="center">'.$row["Nombre"].'</td>
+                        <td align="center">'.$row["Modalidad"].'</td>
+                        <td align="center">'.$row["Ubicacion"].'</td>
+                        <td align="center"><input type="radio" name="id_pase" value="'.$row["id_pase"].'"></td>
                     </tr>';
             } 
             echo    '</tbody>
@@ -59,6 +59,7 @@
             </form>';
              
         }
+        //Si solo hay una modalidad o sede...
         else
         {
             //Obteniendo el id_pase de la carrera.
@@ -80,7 +81,6 @@
             //Si se pudo hacer el registro exitosamente, se inicia la sesion con el numero de cuenta.
             else  
             {
-                echo 'Se registraron lo datos básicos';
                 header("location: ./calif_4.php");
             }
         } 

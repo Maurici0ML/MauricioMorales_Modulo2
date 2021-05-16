@@ -50,6 +50,8 @@
     {
         echo '<h1>Ingresa tus calificaciones de 4to año</h1>';
         echo '<form action="./calif_4.php" method="POST">';
+        
+        //While que despliega los inputs para las distintas materias.
         while($asignatura = mysqli_fetch_array($resp, MYSQLI_ASSOC))
         {
             $nombre_junto= str_replace(" ", "", $asignatura["Nombre"]); //Variable que guarda el nombre junto para que no halla problemas en futuros en la viable POST

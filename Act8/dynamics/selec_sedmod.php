@@ -21,7 +21,6 @@
         //Si se pudo hacer el registro exitosamente, se inicia la sesion con el numero de cuenta.
         else  
         {
-            echo 'Se registraron lo datos básicos';
             header("location: ./calif_4.php");
         }
         mysqli_close($conex);

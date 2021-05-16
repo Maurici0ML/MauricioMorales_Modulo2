@@ -1,13 +1,3 @@
-<?php
-
-    /*session_start();
-    if($_SESSION["ncuenta"])
-    {
-        header('location: ./data_alum.php');
-    }*/
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,11 +7,9 @@
     <title>Consultoría Kiki</title>
 </head>
 <body>
-    <form action="./data_alum.php" method="POST">
-        <fieldset>
-            <br>
-            <strong>Execute Pase Reglamentado</strong>
-            <br><br>
+    <form action="../dynamics/data_alum.php" method="POST">
+        <fieldset style="width: fit-content">
+        <legend><h1>Validacion de alumno</h1></legend>
             <label>Número de cuenta: <br>
                 <input type="number" name="ncuenta" placeholder="Número de cuenta">
             </label>

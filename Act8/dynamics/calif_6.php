@@ -60,6 +60,8 @@
     {
         echo '<h1>Ingresa tus calificaciones de 6to año</h1>';
         echo '<form action="./calif_6.php" method="POST">';
+
+        //While que despliega los inputs para las distintas materias OPTATIVAS.
         while($asignatura_noOpt = mysqli_fetch_array($resp, MYSQLI_ASSOC))
         {
             $nombre_junto= str_replace(" ", "", $asignatura_noOpt["Nombre"]); //Variable que guarda el nombre junto para que no halla problemas en futuros en la viable POST
@@ -75,6 +77,8 @@
                 //consulta para saber las materias NO OPTATIVAS
                 $consulta = 'SELECT Clave, Nombre FROM asignaturas WHERE Anio = 6 AND Area = '.$area["Area"].' AND Optativa = "S";';
                 $resp = mysqli_query($conex, $consulta);
+                
+                //While que despliega el select de las materias OPTATIVAS
                 While($asignatura_Opt = mysqli_fetch_array( $resp, MYSQLI_ASSOC))
                 {
                     echo '<option value="'.$asignatura_Opt["Clave"].'">'.$asignatura_Opt["Nombre"].'</option>';

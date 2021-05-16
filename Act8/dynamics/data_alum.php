@@ -17,15 +17,20 @@
         //Si encuentra coincidencias, redirige a la tabla de resultados
         if($contcoinsid > 0)
         {
-            //REDIRECCIONAR A LOS RESULTADOS O ALGO ASÍ
-            echo"Ya esta registrado el numero de cuenta en la base de datos";
+            //Redireccionar a la página de resultados.
+            echo"<h2>Ya esta registrado el numero de cuenta en la base de datos</h2>";
+
+            echo '<form action="./resultados.php" method="POST">
+                    <input type="submit" value="ver resultados">
+                    <input type="hidden" name="existe">
+                </form>';
         }
         //Si no encuentra coincidencias muestra el formulario para agrefar la información para agregar el usuario a la base de datos.
         else
         {
             echo'<form action="./regist_usuario.php" method="POST">
-                    <fieldset>
-                        <legend>Ingresa los siguientes datos</legend>
+                    <fieldset style="width: fit-content">
+                        <legend><h2>Ingresa los siguientes datos</h2></legend>
                         <label><strong>Nombre(s):</strong><br>
                             <input type="text" name="nombre" required>
                         </label>
@@ -62,12 +67,8 @@
                         <input type="submit" value="Continuar">
                     </fieldset>
                 </form>';
-            //echo 'SE GUARDO EL NUMERO DE CUENTA EN LA BASE DE DATOS';
+            
             mysqli_close($conex); 
         }
-    }
-    else
-    {
-        echo "redireccionar a numero de cuenta";
     }
 ?>

@@ -48,15 +48,13 @@
                 </tr>
             </tbody>
         </table>';
-    
-    //Consulta para obtener el nombre de la carrera.
-    $consulta='SELECT carrera.Nombre FROM alumno INNER JOIN pase_regla ON alumno.id_pase=pase_regla.id_pase
-    INNER JOIN carrera ON pase_regla.clave_carrera=carrera.clave_carrera WHERE Ncuenta = '.$_SESSION["ncuenta"].'';
-    $resp = mysqli_query($conex,$consulta);
-    $carrera = mysqli_fetch_array($resp);
 
     //Condiciones que establecen la probabilidad.
-    if($promedioF > $datos["promedio"] + 0.5)
+    if($datos["promedio"] == 0)
+    {
+        $probabilidad = "CARRERA DE ACCESO INDIRECTO";
+    }
+    elseif($promedioF > $datos["promedio"] + 0.5)
     {
         $probabilidad="Alta";
     }
@@ -73,9 +71,15 @@
         $probabilidad="Casi nula";
     }
 
+    //Consulta para obtener el nombre de la carrera.
+    $consulta='SELECT carrera.Nombre FROM alumno INNER JOIN pase_regla ON alumno.id_pase=pase_regla.id_pase
+    INNER JOIN carrera ON pase_regla.clave_carrera=carrera.clave_carrera WHERE Ncuenta = '.$_SESSION["ncuenta"].'';
+    $resp = mysqli_query($conex,$consulta);
+    $carrera = mysqli_fetch_array($resp);
+
     //Tabla para desplegar los datos sobre la carrera solicitada.
-    echo '<br><br><strong>Carrera solicitada</strong><br><br>';
-    echo 'promedio: '.$datos["promedio"];
+    echo '<br><br><strong>Carrera solicitada</strong><br>';
+    echo 'Promedio mínimo: '.$datos["promedio"].'<br><br>';
     echo '<table border="1">
         <thead>
             <tr>
@@ -94,4 +98,16 @@
             </tr>
         </tbody>
         </table>';
+    
+    //Botones que permiten regresar (cerrar sesión) o eliminar el registro y cerrar sesion.
+    echo '<form action="./borrar.php" method="POST">
+            <br><input type="submit" name="cerrar_sesion" value="Regresar">';
+
+    if(isset($_POST["existe"]))
+    {
+        echo '<br><input type="submit" name="borrar" value="Borrar registro">';  
+    }
+
+    echo '</form>';
+    mysqli_close($conex);
 ?>
